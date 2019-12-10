@@ -84,6 +84,7 @@ class Book(APIView):
 class Login(APIView):
     def get(self, request, format=None):
         userdata = request.data
+        print(userdata)
         username = userdata['username']
         user = User.objects.get(username=username)
         password = user.password
@@ -100,6 +101,7 @@ class Login(APIView):
 class Resister(APIView):
     def get(self, request, format=None):
         user_data = request.data
+        print(user_data)
         user = User.objects.filter(username=user_data['username'])
         if user.count() != 0:
             res = {"该用户名已被注册"}
