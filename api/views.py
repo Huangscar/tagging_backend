@@ -26,7 +26,7 @@ class TagingPic(APIView):
 class TaggingPicP(APIView):
     def get(self, request, format=None):
         try:
-            data = request.data
+            data = request.query_params.copy()
             print(data)
             id = int(data['id'])
             tag_pic = TagPic.objects.get(id=id)
@@ -83,7 +83,7 @@ class Book(APIView):
 
 class Login(APIView):
     def get(self, request, format=None):
-        userdata = request.data
+        userdata = request.query_params.copy()
         print(userdata)
         username = userdata['username']
         user = User.objects.get(username=username)
@@ -100,7 +100,7 @@ class Login(APIView):
 
 class Resister(APIView):
     def get(self, request, format=None):
-        user_data = request.data
+        user_data = request.query_params.copy()
         print(user_data)
         user = User.objects.filter(username=user_data['username'])
         if user.count() != 0:
