@@ -85,17 +85,11 @@ WSGI_APPLICATION = 'tagging_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'nlp',
-        # 'USER': 'lab',
-        # 'PASSWORD': 'labteam',
-        # 'HOST': 'robotclass.tk',
-        # 'PORT': '33306'
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kg',
         'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
+        'PASSWORD': '123456',
+        'HOST': 'db',
         'PORT': '3306'
     },
 }
