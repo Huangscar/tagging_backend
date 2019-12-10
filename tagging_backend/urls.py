@@ -23,5 +23,6 @@ urlpatterns = [
     path('resister', Resister.as_view()),
     path('login', Login.as_view()),
     path('book', Book.as_view()),
-    path('episodePic', EpisodePic.as_view())
+    path('episodePic', EpisodePic.as_view()),
+    path('tag', TaggingPicP.as_view())
 ]

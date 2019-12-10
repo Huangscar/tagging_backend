@@ -23,7 +23,8 @@ class TagingPic(APIView):
         }
         return Response(res, status=status.HTTP_200_OK)
 
-    def post(self, request, format=None):
+class TaggingPicP(APIView):
+    def get(self, request, format=None):
         try:
             data = request.data
             print(data)
@@ -81,7 +82,7 @@ class Book(APIView):
         return Response(res, status=status.HTTP_200_OK)
 
 class Login(APIView):
-    def post(self, request, format=None):
+    def get(self, request, format=None):
         userdata = request.data
         username = userdata['username']
         user = User.objects.get(username=username)
@@ -97,7 +98,7 @@ class Login(APIView):
             return Response(status.HTTP_400_BAD_REQUEST)
 
 class Resister(APIView):
-    def post(self, request, format=None):
+    def get(self, request, format=None):
         user_data = request.data
         user = User.objects.filter(username=user_data['username'])
         if user.count() != 0:
