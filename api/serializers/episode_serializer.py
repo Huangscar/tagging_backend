@@ -23,11 +23,11 @@ class EpisodeSerializer(serializers.Serializer):
         return len(tag_pic)
 
     def get_complete_num(self, obj):
-        tag_pics = TagPic.objects.filter(Q(episode__id=obj.id) & Q(tag_num=1))
+        tag_pics = TagPic.objects.filter(Q(episode__id=obj.id) & ~Q(tag_num=0))
         return len(tag_pics)
 
     def get_last(self, obj):
-        tag_pic = TagPic.objects.filter(Q(episode__id=obj.id) & Q(tag_num=1))
+        tag_pic = TagPic.objects.filter(Q(episode__id=obj.id) & ~Q(tag_num=0))
         if tag_pic.count() > 0:
             user = tag_pic.first().users.first()
             return user.username

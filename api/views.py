@@ -15,8 +15,8 @@ from django.contrib.auth.hashers import make_password, check_password
 class TagingPic(APIView):
     def get(self, request, format=None):
         data = request.query_params.copy()
-        episode_id = int(data['id'])
-        tag_pic = TagPic.objects.filter(Q(episode__id=episode_id) & Q(tag_num=0)).order_by('id')
+        pid = int(data['id'])
+        tag_pic = TagPic.objects.filter(Q(id__gt=pid) & Q(tag_num=0)).order_by('id')
         if tag_pic.count() > 0:
             tag_pic_serializer = TagPicSerializer(tag_pic.first())
             res = {
